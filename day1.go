@@ -8,10 +8,6 @@ import (
 	"strconv"
 )
 
-func main() {
-	ReadFile()
-}
-
 // ComputeFuelForMassRecursively return fuel needed to move a module based on its mass plus an accumulator
 func ComputeFuelForMassRecursively(accumulator int, mass int) int {
 	res := mass/3 - 2
