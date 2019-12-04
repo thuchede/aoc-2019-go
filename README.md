@@ -39,6 +39,8 @@ Since the main goal is to learn a new programming language, I'm not trying to re
 
 ## Day 3
 
+### first attempt
+
 - creating struct to encapsulate behavior is useless
 - do not try to reproduce example as it, use them as test case scenario only
 - try to understand what is expected, input might be large and might drive possible solutions (or rule out some)
@@ -47,3 +49,13 @@ Since the main goal is to learn a new programming language, I'm not trying to re
 ### What I've learned
 
 `some_string[i:]` : to get a slice from index `i` to the end
+
+### second attempt
+
+- working with map is really a nice way to track unbounded values
+- seems like easily extensible to part two problem to keep track of number of step needed to reach each location
+- since there is no generics in go, there is no helper method to sort/find element in a array/map and you have to rewrite everything
+
+### What I've learned
+
+`for key, value := range my_map` : allow to loop through all values of a map

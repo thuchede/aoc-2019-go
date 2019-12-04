@@ -1,9 +1,8 @@
 package main
 
-func main() {
-	g := NewGrid(11, 10)
-	g.grid[9][1] = "o"
-	g.printGrid()
+import "fmt"
 
-	AddWire(g, []string{"R3", "U2"})
+func main() {
+	// fmt.Printf("res: %v", ReadFileDay3())
+	fmt.Printf("res: %v", ReadFileDay3Part2())
 }
