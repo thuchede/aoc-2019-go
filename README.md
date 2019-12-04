@@ -59,3 +59,11 @@ Since the main goal is to learn a new programming language, I'm not trying to re
 ### What I've learned
 
 `for key, value := range my_map` : allow to loop through all values of a map
+
+## Day 4
+
+- brute force is sometime the easy way
+
+### What I've learned
+
+`num / int(math.Pow(10, float64(n))) % 10` : get the nth digit of num without converting to string
