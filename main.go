@@ -1,6 +1,6 @@
 package main
 
 func main() {
-	ReadFileDay4()
+	ReadFileDay5()
 	// fmt.Printf("res: %v", )
 }

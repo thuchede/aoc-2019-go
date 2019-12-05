@@ -67,3 +67,9 @@ Since the main goal is to learn a new programming language, I'm not trying to re
 ### What I've learned
 
 `num / int(math.Pow(10, float64(n))) % 10` : get the nth digit of num without converting to string
+
+## Day 5
+
+-
+
+### What I've learned
