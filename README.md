@@ -70,6 +70,21 @@ Since the main goal is to learn a new programming language, I'm not trying to re
 
 ## Day 5
 
--
-
 ### What I've learned
+
+The included testing package in go allow to define example and read output in stdin. If the function `MyFunc` should output `blabla`, then you can write the following test example:
+
+```
+func ExampleMyFunc(){
+  MyFunc()
+  // Output
+  // blabla
+}
+```
+
+## Day 6
+
+- The lack of generics feels cumbersome, always forcing us to rewrite small utilities like `contains` and `indexOf`
+- reversing a map hierarchy node => childrens for node => parent can help solving a problem
+
+## Day 7

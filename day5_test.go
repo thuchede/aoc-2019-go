@@ -1,6 +1,9 @@
 package main
 
 import (
+	"io/ioutil"
+	"log"
+	"os"
 	"testing"
 )
 
@@ -80,26 +83,6 @@ func TestExecuteIntCodeWithMode(t *testing.T) {
 	if !compareSliceHelperWithMode(res, output) {
 		t.Error("expected value")
 	}
-	// content := []byte("m")
-	//   tmpfile, err := ioutil.TempFile("", "example")
-	//   if err != nil {
-	//       log.Fatal(err)
-	//   }
-
-	//   defer os.Remove(tmpfile.Name()) // clean up
-
-	//   if _, err := tmpfile.Write(content); err != nil {
-	//       log.Fatal(err)
-	//   }
-
-	//   if _, err := tmpfile.Seek(0, 0); err != nil {
-	//       log.Fatal(err)
-	//   }
-
-	//   oldStdin := os.Stdin
-	//   defer func() { os.Stdin = oldStdin }() // Restore original Stdin
-
-	//   os.Stdin = tmpfile
 	inputf := []int{1002, 4, 3, 4, 33}
 	outputf := []int{1002, 4, 3, 4, 99}
 	resf := ExecuteIntCodeWithMode(inputf)
@@ -127,4 +110,118 @@ func TestExtractOpCodeAndMode(t *testing.T) {
 	if o, p1, p2, p3 := ExtractOpCodeAndMode(10199); o != 2 && p1 != 1 && p2 != 0 && p3 != 1 {
 		t.Error("failed")
 	}
+}
+
+func ExampleExecuteIntCodeFromIndexWithMode() {
+	content := []byte("8\n")
+	tmpfile, err := ioutil.TempFile("", "example")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer os.Remove(tmpfile.Name()) // clean up
+
+	if _, err := tmpfile.Write(content); err != nil {
+		log.Fatal(err)
+	}
+
+	if _, err := tmpfile.Seek(0, 0); err != nil {
+		log.Fatal(err)
+	}
+
+	oldStdin := os.Stdin
+	defer func() { os.Stdin = oldStdin }() // Restore original Stdin
+
+	os.Stdin = tmpfile
+
+	input1 := []int{3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8}
+	ExecuteIntCodeFromIndexWithMode(input1, 0)
+	// Output:
+	// input?
+	// code: 1
+}
+func ExampleExecuteIntCodeFromIndexWithMode2() {
+	content := []byte("9\n")
+	tmpfile, err := ioutil.TempFile("", "example")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer os.Remove(tmpfile.Name()) // clean up
+
+	if _, err := tmpfile.Write(content); err != nil {
+		log.Fatal(err)
+	}
+
+	if _, err := tmpfile.Seek(0, 0); err != nil {
+		log.Fatal(err)
+	}
+
+	oldStdin := os.Stdin
+	defer func() { os.Stdin = oldStdin }() // Restore original Stdin
+
+	os.Stdin = tmpfile
+
+	input1 := []int{3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8}
+	ExecuteIntCodeFromIndexWithMode(input1, 0)
+	// Output:
+	// input?
+	// code: 0
+}
+
+func ExampleExecuteIntCodeFromIndexWithMode3() {
+	content := []byte("1\n")
+	tmpfile, err := ioutil.TempFile("", "example")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer os.Remove(tmpfile.Name()) // clean up
+
+	if _, err := tmpfile.Write(content); err != nil {
+		log.Fatal(err)
+	}
+
+	if _, err := tmpfile.Seek(0, 0); err != nil {
+		log.Fatal(err)
+	}
+
+	oldStdin := os.Stdin
+	defer func() { os.Stdin = oldStdin }() // Restore original Stdin
+
+	os.Stdin = tmpfile
+
+	input1 := []int{3, 9, 7, 9, 10, 9, 4, 9, 99, -1, 8}
+	ExecuteIntCodeFromIndexWithMode(input1, 0)
+	// Output:
+	// input?
+	// code: 1
+}
+func ExampleExecuteIntCodeFromIndexWithMode4() {
+	content := []byte("9\n")
+	tmpfile, err := ioutil.TempFile("", "example")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer os.Remove(tmpfile.Name()) // clean up
+
+	if _, err := tmpfile.Write(content); err != nil {
+		log.Fatal(err)
+	}
+
+	if _, err := tmpfile.Seek(0, 0); err != nil {
+		log.Fatal(err)
+	}
+
+	oldStdin := os.Stdin
+	defer func() { os.Stdin = oldStdin }() // Restore original Stdin
+
+	os.Stdin = tmpfile
+
+	input1 := []int{3, 9, 7, 9, 10, 9, 4, 9, 99, -1, 8}
+	ExecuteIntCodeFromIndexWithMode(input1, 0)
+	// Output:
+	// input?
+	// code: 0
 }
