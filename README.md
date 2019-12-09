@@ -88,3 +88,12 @@ func ExampleMyFunc(){
 - reversing a map hierarchy node => childrens for node => parent can help solving a problem
 
 ## Day 7
+
+- generating all permutation (n!) is hard
+- the concept of non-shared memory was not properly tested, resulting in really hard-to-debug assumption
+- use pointer when you need to share a resizeable array/slice between differents objects
+
+### What I've learned
+
+`array_1 := array_0` creates a copy of the array, ie. 2 distinct objects
+`slice_1 := slice_0` creates a pointer to the slice, ie. 1 object

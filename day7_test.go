@@ -24,3 +24,21 @@ func TestExecuteIntCodeFromIndexWithModeAndReturnValue(t *testing.T) {
 	}
 	t.Logf("went great")
 }
+
+func TestExecuteIntCodeFromIndexWithModeAndReturnValueFeedBackLoop(t *testing.T) {
+	amp := []int{3, 26, 1001, 26, -4, 26, 3, 27, 1002, 27, 2, 27, 1, 27, 26, 27, 4, 27, 1001, 28, -1, 28, 1005, 28, 6, 99, 0, 0, 5}
+	phases := []int{5, 6, 7, 8, 9}
+	if res := RunAmplifierCodeFBL(amp, phases, 0); res != 61696857 {
+		t.Errorf("expected 61696857 got %v", res)
+	}
+	amp0 := []int{3, 26, 1001, 26, -4, 26, 3, 27, 1002, 27, 2, 27, 1, 27, 26, 27, 4, 27, 1001, 28, -1, 28, 1005, 28, 6, 99, 0, 0, 5}
+	phases0 := []int{9, 8, 7, 6, 5}
+	if res := RunAmplifierCodeFBL(amp0, phases0, 0); res != 139629729 {
+		t.Errorf("expected 139629729 got %v", res)
+	}
+	amp1 := []int{3, 52, 1001, 52, -5, 52, 3, 53, 1, 52, 56, 54, 1007, 54, 5, 55, 1005, 55, 26, 1001, 54, -5, 54, 1105, 1, 12, 1, 53, 54, 53, 1008, 54, 0, 55, 1001, 55, 1, 55, 2, 53, 55, 53, 4, 53, 1001, 56, -1, 56, 1005, 56, 6, 99, 0, 0, 0, 0, 10}
+	phases1 := []int{9, 7, 8, 5, 6}
+	if res := RunAmplifierCodeFBL(amp1, phases1, 0); res != 18216 {
+		t.Errorf("expected 18216 got %v", res)
+	}
+}
