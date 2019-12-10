@@ -1,5 +1,5 @@
 package main
 
 func main() {
-	ReadFileDay8()
+	ReadFileDay9()
 }

@@ -100,8 +100,6 @@ func ExampleMyFunc(){
 
 ## Day 8
 
--
-
 ### What I've learned
 
 `string` in go is an immutable type, ie. you can't set :
@@ -113,3 +111,7 @@ my_string[index] = some_char // invalid!
 `int(^uint(0) >> 1)` gets you the maximum signed integer without the math package
 `math.MaxInt32` is max value on 32 bits
 `math.MaxInt64` is max value on 64 bits
+
+## Day 9
+
+`The computer's available memory should be much larger than the initial program` force to initialize an large array. In go you'd have to loop through the array to set each initial value individually
