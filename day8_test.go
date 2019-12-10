@@ -70,3 +70,20 @@ func TestComputeHash(t *testing.T) {
 		t.Errorf("expected 15, received %v", res)
 	}
 }
+
+func TestPaintLayer(t *testing.T) {
+	input0 := "1100"
+	layer0 := "2012"
+	expected0 := "1010"
+	if res := PaintLayer(input0, layer0); res != expected0 {
+		t.Errorf("expected 1010, got %v", res)
+	}
+	layer11 := "0222"
+	layer12 := "1122"
+	layer13 := "2212"
+	layer14 := "0000"
+	expected1 := "0110"
+	if res := PaintLayer(PaintLayer(PaintLayer(layer14, layer13), layer12), layer11); res != expected1 {
+		t.Errorf("expected 0110, got %v", res)
+	}
+}

@@ -17,7 +17,7 @@ func ReadFileDay8() {
 	rawLayers := scanner.Text()
 
 	// fmt.Printf("%v\n", rawLayers)
-	fmt.Printf("%v\n", ComputeHash(rawLayers, 25, 6))
+	PaintLayers(rawLayers, 25, 6)
 }
 
 func ExtractLayers(input string, width, height int) []string {
@@ -52,4 +52,33 @@ func ComputeHash(input string, width, height int) int {
 	validationLayer := layers[index]
 	output := strings.Count(validationLayer, "1") * strings.Count(validationLayer, "2")
 	return output
+}
+
+func PaintLayer(image string, layer string) string {
+	res := image
+	for pos, char := range layer {
+		if string(char) != "2" {
+			res = res[:pos] + string(char) + res[pos+1:]
+		}
+	}
+	return res
+}
+
+func PaintLayers(inputs string, width, height int) {
+	layers := ExtractLayers(inputs, width, height)
+	nbLayers := len(layers)
+	output := layers[nbLayers-1]
+	for i := nbLayers - 2; i >= 0; i-- {
+		output = PaintLayer(output, layers[i])
+	}
+	PrettyPrintCode(output, width, height)
+}
+
+func PrettyPrintCode(image string, width, height int) {
+	start, end := 0, width
+	for start < len(image) {
+		fmt.Printf("%v\n", strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(image[start:end], "0", " "), "2", " "), "1", "█"))
+		start += width
+		end += width
+	}
 }

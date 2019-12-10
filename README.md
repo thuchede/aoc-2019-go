@@ -97,3 +97,19 @@ func ExampleMyFunc(){
 
 `array_1 := array_0` creates a copy of the array, ie. 2 distinct objects
 `slice_1 := slice_0` creates a pointer to the slice, ie. 1 object
+
+## Day 8
+
+-
+
+### What I've learned
+
+`string` in go is an immutable type, ie. you can't set :
+
+```
+my_string[index] = some_char // invalid!
+```
+
+`int(^uint(0) >> 1)` gets you the maximum signed integer without the math package
+`math.MaxInt32` is max value on 32 bits
+`math.MaxInt64` is max value on 64 bits
