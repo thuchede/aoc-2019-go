@@ -27,7 +27,8 @@ func ReadFileDay9() {
 	for i := 0; i < len(strcode); i++ {
 		intcode[i], _ = strconv.Atoi(strcode[i])
 	}
-	input := []int{1}
+	// input := []int{1} // => part 1
+	input := []int{2} // => part 2
 	output := []int{}
 	res := ExecuteIntCodeRelative(intcode, 0, &input, &output, 0)
 	fmt.Printf("%v : %v\n", output, res)
