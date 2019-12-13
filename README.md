@@ -115,3 +115,13 @@ my_string[index] = some_char // invalid!
 ## Day 9
 
 `The computer's available memory should be much larger than the initial program` force to initialize an large array. In go you'd have to loop through the array to set each initial value individually
+
+## Day 10
+
+To check all, immediately, visible items from a set of coordinates, we have to find a way to check if the line of sight to an item is blocked.
+From a point of observation with coordinates O(a, b) the closest point C(x, y) is visible if the vector OC is the shortest in that direction and all points Vi(xi, yi) are hidden if the dot product OC.OVi = cos COVi = 1
+Can't check for colinear vector as opposite vector will be colinear.
+
+## What I've learned
+
+- when comparing float number, use a very small delta
