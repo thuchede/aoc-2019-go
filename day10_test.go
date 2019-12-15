@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"math"
 	"testing"
 )
 
@@ -32,7 +34,7 @@ func TestCompareVectorDirection(t *testing.T) {
 	}
 }
 
-func TestComputeVectorFromCoordinates(t *testing.T) {
+func TestComputeVectorFromCoordinates0(t *testing.T) {
 	point0a := Key{X: 1, Y: 1}
 	point0b := Key{X: 2, Y: 2}
 	if res := ComputeVectorFromCoordinates(point0a, point0b); res.X != 1 && res.Y != 1 {
@@ -237,5 +239,78 @@ func TestFindHigest(t *testing.T) {
 	}
 	if res, visible := FindHigest(input3); res.X != 11 && res.Y != 13 && visible != 210 {
 		t.Errorf("expected 11,13 with 210 got %v with %v\n", res, visible)
+	}
+}
+
+func TestCosTheta(t *testing.T) {
+	if CosTheta(Key{X: 0, Y: -1}, Key{X: 1, Y: 0}) != 0.0 {
+		t.Error("no")
+	}
+	if CosTheta(Key{X: 0, Y: -1}, Key{X: -1, Y: 1}) >= 0.0 {
+		t.Error("no")
+	}
+}
+
+func TestOrientedCosTheta(t *testing.T) {
+	if OrientedCosTheta(Key{X: 0, Y: -1}, Key{X: 1, Y: 0}) != 0.0 {
+		t.Error("no")
+	}
+	if OrientedCosTheta(Key{X: 0, Y: -1}, Key{X: -1, Y: 1}) >= 0.0 {
+		t.Error("no")
+	}
+	if OrientedCosTheta(Key{X: 0, Y: -1}, Key{X: 1, Y: -1}) >= 0.0 {
+		t.Error("no")
+	}
+	if OrientedCosTheta(Key{X: 0, Y: -1}, Key{X: 1, Y: 1}) == 0.0 {
+		t.Error("no")
+	}
+}
+
+func TestComputeVectorFromCoordinates(t *testing.T) {
+	origin := Key{X: 1, Y: 1}
+	vect4 := ComputeVectorFromCoordinates(origin, Key{X: 1, Y: 1})
+	fmt.Printf("vec %v", vect4)
+	if res := math.Pi/2 - math.Atan2(-float64(vect4.Y), float64(vect4.X)); vect4.X != 0 || vect4.Y != 0 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect1 := ComputeVectorFromCoordinates(origin, Key{X: 1, Y: 0})
+	fmt.Printf("vec %v", vect1)
+	if res := math.Pi/2 - math.Atan2(-float64(vect1.Y), float64(vect1.X)); vect1.X != 0 || vect1.Y != -1 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect2 := ComputeVectorFromCoordinates(origin, Key{X: 2, Y: 0})
+	fmt.Printf("vec %v", vect2)
+	if res := math.Pi/2 - math.Atan2(-float64(vect2.Y), float64(vect2.X)); vect2.X != 1 || vect2.Y != -1 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect5 := ComputeVectorFromCoordinates(origin, Key{X: 2, Y: 1})
+	fmt.Printf("vec %v", vect5)
+	if res := math.Pi/2 - math.Atan2(-float64(vect5.Y), float64(vect5.X)); vect5.X != 1 || vect5.Y != 0 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect8 := ComputeVectorFromCoordinates(origin, Key{X: 2, Y: 2})
+	fmt.Printf("vec %v", vect8)
+	if res := math.Pi/2 - math.Atan2(-float64(vect8.Y), float64(vect8.X)); vect8.X != 1 || vect8.Y != 1 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect7 := ComputeVectorFromCoordinates(origin, Key{X: 1, Y: 2})
+	fmt.Printf("vec %v", vect7)
+	if res := math.Pi/2 - math.Atan2(-float64(vect7.Y), float64(vect7.X)); vect7.X != 0 || vect7.Y != 1 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect6 := ComputeVectorFromCoordinates(origin, Key{X: 0, Y: 2})
+	fmt.Printf("vec %v", vect6)
+	if res := math.Pi/2 - math.Atan2(-float64(vect6.Y), float64(vect6.X)); vect6.X != -1 || vect6.Y != 1 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect3 := ComputeVectorFromCoordinates(origin, Key{X: 0, Y: 1})
+	fmt.Printf("vec %v", vect3)
+	if res := math.Pi/2 - math.Atan2(-float64(vect3.Y), float64(vect3.X)); vect3.X != -1 || vect3.Y != 0 {
+		t.Errorf("no ; %v\n", res)
+	}
+	vect0 := ComputeVectorFromCoordinates(origin, Key{X: 0, Y: 0})
+	fmt.Printf("vec %v", vect0)
+	if res := math.Pi/2 - math.Atan2(-float64(vect0.Y), float64(vect0.X)); vect0.X != -1 || vect0.Y != -1 {
+		t.Errorf("no ; %v\n", res+2*math.Pi)
 	}
 }

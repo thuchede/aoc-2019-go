@@ -125,3 +125,7 @@ Can't check for colinear vector as opposite vector will be colinear.
 ## What I've learned
 
 - when comparing float number, use a very small delta
+- trigonometry can be hard
+- manipulating vectors and origin is troublesome
+- `math.Atan2` is a useful function to get a angle between two vectors
+- `delete(myMap, entry)` : delete a entry from a map
